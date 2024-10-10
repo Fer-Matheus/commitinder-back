@@ -1,0 +1,27 @@
+{
+  "name": "commitinder-back",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "author": "Matheus Freitas",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "tsx watch --env-file .env src/server.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.5",
+    "prisma": "^5.20.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}
