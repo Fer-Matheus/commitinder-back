@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Diffs {
+  id      Int    @id
+  content String
+
+  CommitMessage CommitMessage[]
+
+  @@map("diffs")
+}
+
+model Models {
+  id            Int             @id
+  name          String
+  CommitMessage CommitMessage[]
+
+  @@map("models")
+}
+
+model CommitMessage {
+  id      Int    @id
+  message String
+
+  diffId  Int
+  diff    Diffs  @relation(fields: [diffId], references: [id], onDelete: Cascade)
+  modelId Int
+  model   Models @relation(fields: [modelId], references: [id], onDelete: Cascade)
+
+  @@map("commit_message")
+}
